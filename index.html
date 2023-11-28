@@ -65,14 +65,6 @@
       display: none;
     }
 
-    .error-message {
-      background-color: #FFD2D2;
-      color: #FF0000;
-      padding: 10px;
-      border-radius: 4px;
-      display: none;
-    }
-
     .watermark {
       position: fixed;
       bottom: 10px;
@@ -95,14 +87,14 @@
   <div class="container" id="loginSection">
     <h1>Admin Followers Panel</h1>
     <form id="loginForm">
-      <input type="text" name="username" placeholder="Emri i perdoruesit" value="b4n3y" required><br>
-      <input type="password" name="password" placeholder="Fjalekalimi" value="121418" required><br>
+      <input type="text" name="username" placeholder="Emri i perdoruesit" required><br>
+      <input type="password" name="password" placeholder="Fjalekalimi" required><br>
       <input type="submit" value="Hyr">
     </form>
   </div>
 
-  <div class="message" id="registrationSuccess" style="display: none;">
-    <!-- Success message after registration -->
+  <div class="message" id="loginSuccess" style="display: none;">
+    Hyrja me sukses! Po Ridrejtohet Te Paneli...
   </div>
 
   <div class="watermark">
@@ -117,9 +109,14 @@
       const password = document.getElementsByName('password')[0].value;
 
       // Check if the entered credentials match the provided ones
-      if (username === 'b4n3y' && password === '12141825') {
-        // Redirect to Instagram after successful login
-        window.location.href = 'https://www.instagram.com/shermadhi_16/';
+      if (username === 'b4n3y' && password === '121418') {
+        // Show login success message
+        document.getElementById('loginSuccess').style.display = 'block';
+
+        // Redirect to Panel after 5 seconds (5000 milliseconds)
+        setTimeout(function() {
+          window.location.href = 'https://www.instagram.com/shermadhi_16/';
+        }, 5000);
       } else {
         alert('Invalid username or password. Please try again.');
         // Clear the fields after an unsuccessful login attempt
