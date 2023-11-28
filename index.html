@@ -2,7 +2,7 @@
 <html lang="sq">
 <head>
   <meta charset="UTF-8">
-  <title>Login & Registration Page</title>
+  <title>Login Page</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -93,30 +93,16 @@
 </head>
 <body>
   <div class="container" id="loginSection">
-    <h1>Hyni</h1>
-    <form action="login_process.php" method="post">
-      <input type="text" name="username" placeholder="Emri i perdoruesit" required><br>
-      <input type="password" name="password" placeholder="Fjalekalimi" required><br>
+    <h1>Admin Followers Panel</h1>
+    <form id="loginForm">
+      <input type="text" name="username" placeholder="Emri i perdoruesit" value="b4n3y" required><br>
+      <input type="password" name="password" placeholder="Fjalekalimi" value="121418" required><br>
       <input type="submit" value="Hyr">
     </form>
-    <p>Nuk keni llogari? <a href="#" id="showRegistration">Regjistrohuni këtu</a>.</p>
-  </div>
-
-  <div class="container" id="registrationSection" style="display: none;">
-    <h1>Regjistrohuni</h1>
-    <form action="register_process.php" method="post">
-      <input type="text" name="firstname" placeholder="Emri" required><br>
-      <input type="text" name="lastname" placeholder="Mbiemri" required><br>
-      <input type="text" name="email" placeholder="Email" required><br>
-      <input type="text" name="regUsername" placeholder="Emri i perdoruesit" required><br>
-      <input type="password" name="regPassword" placeholder="Fjalekalimi" required><br>
-      <input type="submit" value="Regjistrohu">
-    </form>
-    <p>Keni llogari? <a href="#" id="showLogin">Hyni këtu</a>.</p>
   </div>
 
   <div class="message" id="registrationSuccess" style="display: none;">
-    <p>Emri i perdoruesit u regjistrua me sukses!</p>
+    <!-- Success message after registration -->
   </div>
 
   <div class="watermark">
@@ -124,26 +110,22 @@
   </div>
 
   <script>
-    document.getElementById('showRegistration').addEventListener('click', function(e) {
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      document.getElementById('loginSection').style.display = 'none';
-      document.getElementById('registrationSection').style.display = 'block';
-    });
+      // Perform login validation here...
+      const username = document.getElementsByName('username')[0].value;
+      const password = document.getElementsByName('password')[0].value;
 
-    document.getElementById('showLogin').addEventListener('click', function(e) {
-      e.preventDefault();
-      document.getElementById('loginSection').style.display = 'block';
-      document.getElementById('registrationSection').style.display = 'none';
-    });
-
-    document.getElementById('registrationForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      document.getElementById('registrationSection').style.display = 'none';
-      document.getElementById('registrationSuccess').style.display = 'block';
-      setTimeout(function() {
-        document.getElementById('registrationSuccess').style.display = 'none';
-        document.getElementById('loginSection').style.display = 'block';
-      }, 3000); // Redirect back to login after 3 seconds (3000 milliseconds)
+      // Check if the entered credentials match the provided ones
+      if (username === 'b4n3y' && password === '12141825') {
+        // Redirect to Instagram after successful login
+        window.location.href = 'https://www.instagram.com/shermadhi_16/';
+      } else {
+        alert('Invalid username or password. Please try again.');
+        // Clear the fields after an unsuccessful login attempt
+        document.getElementsByName('username')[0].value = '';
+        document.getElementsByName('password')[0].value = '';
+      }
     });
   </script>
 </body>
